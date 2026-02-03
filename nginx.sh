@@ -1,5 +1,5 @@
 #!/bin/bash
-STARTTIME=$(date +%A)
+STARTTIME=$(date +%s)
 mkdir -p /tmp/backup
 LOGFILE=$/tmp/backup
 ID=$(id -u)
@@ -18,6 +18,8 @@ validate(){
 
 if [ $ID -ne 0 ];then 
 echo -e " $R..please run this script with root user$N"
+else
+echo "$G..your r a root user$N"
 exit 1
 fi
 
@@ -31,6 +33,6 @@ else
 echo -e "nginx is already installed $Y skipping$N"
 fi
 sleep 30
-ENDTIME=$(date +%A)
+ENDTIME=$(date +%s)
 TOTALTIME=$(($ENDTIME-$STARTTIME))
 echo -e "total script execution time is $TOTALTIME"
