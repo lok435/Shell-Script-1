@@ -4,7 +4,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-today=wednesday
+today=$(wednesday)
 
 if [$today -ne sunday]; then 
 echo "go to school"
