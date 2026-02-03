@@ -14,7 +14,7 @@ echo -e "$G..enjoy the holiday $N"
 fi
 
 ID=$(id -u)
-if [ $ID -ne 0 ]; then 
+if [ $ID -ne 1 ]; then 
 echo -e "$G..your a root user $N"
 else 
 echo -e "$R..kindly run this script with root user $N"
