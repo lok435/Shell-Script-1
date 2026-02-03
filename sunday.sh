@@ -4,9 +4,10 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-today=$(wednesday)
+today=$(date +%A)
 
-if [$today -ne sunday]; then 
+
+if ["$today" != "sunday"]; then 
 echo "go to school"
 else
 echo -e "$G..enjoy the holiday $N"
