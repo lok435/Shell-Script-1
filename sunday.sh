@@ -1,0 +1,20 @@
+#!/bin/bash
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
+
+today=wednesday
+
+if [$today -ne sunday]; then 
+echo "go to school"
+else
+echo -e "$G..enjoy the holiday $N"
+fi
+
+ID=$(id -u)
+if [ $ID -ne 0]; then 
+else 
+echo -e "$R..kindly run this script with root user $N"
+fi
+
