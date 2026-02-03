@@ -4,7 +4,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-today=$(date +%A)
+today="$(date +%A)"
 
 
 if ["$today" != "sunday"]; then 
