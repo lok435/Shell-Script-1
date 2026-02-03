@@ -18,8 +18,6 @@ validate(){
 
 if [ $ID -ne 0 ];then 
 echo -e " $R..please run this script with root user$N"
-else
-echo "$G..your r a root user$N"
 exit 1
 fi
 
