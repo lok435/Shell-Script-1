@@ -6,14 +6,14 @@ N="\e[0m"
 
 today=wednesday
 
-if [$today -ne sunday]; then 
+if [ $today -ne sunday ]; then 
 echo "go to school"
 else
 echo -e "$G..enjoy the holiday $N"
 fi
 
 ID=$(id -u)
-if [ $ID -ne 0]; then 
+if [ $ID -ne 0 ]; then 
 echo -e "$G..your a root user $N"
 else 
 echo -e "$R..kindly run this script with root user $N"
