@@ -7,7 +7,7 @@ N="\e[0m"
 today="$(date +%A)"
 
 
-if ["$today" != "sunday"]; then 
+if ["$today" != "Sunday"]; then 
 echo "go to school"
 else
 echo -e "$G..enjoy the holiday $N"
