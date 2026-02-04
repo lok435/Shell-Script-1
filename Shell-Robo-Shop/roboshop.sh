@@ -7,28 +7,28 @@ SECURITY_GROUP_ID="sg-08c7f0d0c031b570c"
 REGION="us-east-1"
 for instance in $@
 do 
-    INSTANCE_ID=$(aws ec2 run-instances\
-    --image-id $AMI_ID\
-    --region $REGION\
-    --instance-type $INSTANCE_TYPE\
-    --security-group-ids $SECURITY_GROUP_ID\
+    INSTANCE_ID=$(aws ec2 run-instances \
+    --image-id $AMI_ID \
+    --region $REGION \
+    --instance-type $INSTANCE_TYPE \
+    --security-group-ids $SECURITY_GROUP_ID \
     #--subnet-id $SUBNET_ID\
-    --tag-specifications "ResourceType=instance,Tags={Key=Name,Value=$instance}"\ 
-    --query 'Reservations[].Instances[].PublicIpAddress'\
+    --tag-specifications "ResourceType=instance,Tags={Key=Name,Value=$instance}" \ 
+    --query '.Instances[0].InstanceId' \
     --output text )
 
     if [ $instance == "frontend" ];then
        IP=$(
-        aws ec2 describe-instances\
-         --instance-ids $INSTANCE_ID\
-         --query 'Reservations[].Instances[].PublicIpAddress'\
+        aws ec2 describe-instances \
+         --instance-ids $INSTANCE_ID \
+         --query '.Instances[0].InstanceId' \
          --output text
        )
     else
         IP=$(
-        aws ec2 describe-instances\
-         --instance-ids $INSTANCE_ID\
-         --query 'Reservations[].Instances[].PrivateIpAddress'\
+        aws ec2 describe-instances \
+         --instance-ids $INSTANCE_ID \
+         --query 'Reservations[].Instances[].PrivateIpAddress' \
          --output text
         )
     fi   
