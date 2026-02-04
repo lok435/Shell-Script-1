@@ -8,6 +8,11 @@ G="\e[32m"
 Y="\e[31m"
 N="\e[0m"
 
+LOG_FOLDER="/var/log/Shell-script"
+LOG_FILE="/var/log/Shell-script/$0.log"
+
+mkdir -p /var/log/Shell-script
+
 validate(){
     if [ $1 -ne 0 ];then 
     echo -e "$2..$R failed $N"
@@ -30,6 +35,13 @@ validate $? "installing nginx"
 else
 echo -e "nginx is already installed $Y skipping$N"
 fi
+
+yum install mysql -y &>> $LOG_FILE
+validate $1 "installing mongodb"
+
+yum install nodejs -y &>> $LOG_FILE
+validate $1 "installing nodejs"
+
 sleep 30
 ENDTIME=$(date +%s)
 TOTALTIME=$(($ENDTIME-$STARTTIME))
