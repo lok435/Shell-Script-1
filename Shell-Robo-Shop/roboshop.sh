@@ -13,7 +13,7 @@ do
     --instance-type $INSTANCE_TYPE \
     --security-group-ids $SECURITY_GROUP_ID \
     #--subnet-id $SUBNET_ID \
-    --tag-specifications 'ResourceType=instance,Tags={Key=Name,Value=$instance}' 
+    --tag-specifications 'ResourceType=instance,Tags={Key=Name,Value=$instance}'\ 
     --query 'Reservations[].Instances[].PublicIpAddress' \
     --output text )
 
