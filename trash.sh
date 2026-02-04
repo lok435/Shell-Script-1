@@ -14,15 +14,14 @@ LOG_FILE="/var/log/Shell-script/$0.log"
 
 mkdir -p /var/log/Shell-script &>> LOG_FILE
 if [ $ID -ne 0 ];then 
-echo -e " $R..please run this script with root user $N"
-exit 1
+echo -e " $R..please run this script with root user $N" 
 fi
 
 for package in $@
 do 
-    yum list installed $package &>> $LOG_FILE
+    yum list installed $package &>> | tee -a $LOG_FILE
     if [ $? -ne 0 ];then 
-    yum install $package -y  &>> $LOG_FILE
+    yum install $package -y  &>> | tee -a $LOG_FILE
     else
     echo -e "$package..is already installed $Y skipping$N"
     fi
@@ -32,4 +31,4 @@ echo "this line is for demonstrating"
 sleep 11
 ENDTIME=$(date +%s)
 TOTALTIME=$(($ENDTIME-$STARTTIME))
-echo -e "total script execution time is $TOTALTIME
+echo -e " $R..total script execution time is :$N..$G $TOTALTIME $N"
