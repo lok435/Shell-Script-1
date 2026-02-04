@@ -2,9 +2,9 @@
 STARTTIME=$(date +%s)
 
 ID=$(id -u)
-R="\e[33m"
+R="\e[31m"
 G="\e[32m"
-Y="\e[31m"
+Y="\e[33m"
 N="\e[0m"
 
 LOG_FOLDER="/var/log/Shell-script"
@@ -21,7 +21,7 @@ validate(){
 }
 
 if [ $ID -ne 0 ];then 
-echo -e " $R..please run this script with root user$N"
+echo -e " $R..please run this script with root user $N"
 exit 1
 fi
 
