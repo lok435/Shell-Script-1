@@ -1,7 +1,6 @@
 #!/bin/bash
 STARTTIME=$(date +%s)
-mkdir -p /tmp/backup
-LOGFILE=$/tmp/backup
+
 ID=$(id -u)
 R="\e[33m"
 G="\e[32m"
