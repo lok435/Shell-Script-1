@@ -6,8 +6,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-set -e 
-trap 'handle_error' ERR
+
 
 mkdir -p /var/log/Shell-script &>> LOG_FILE
 LOG_FOLDER="/var/log/Shell-script"
@@ -26,7 +25,7 @@ do
     echo -e "$package..is already installed $Y skipping$N"
     fi
 done
-echoo "hello"
+echo "hell"
 echo "this script executed at $TIMESTAMP"
 echo "this line is for demonstrating"
 sleep 11
