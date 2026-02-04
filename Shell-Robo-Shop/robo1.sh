@@ -25,3 +25,4 @@ do
         )
     fi
     echo " ipadress is : $IP"
+done
