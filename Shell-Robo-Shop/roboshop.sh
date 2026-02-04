@@ -12,24 +12,22 @@ do
     --region $REGION \
     --instance-type $INSTANCE_TYPE \
     --security-group-ids $SECURITY_GROUP_ID \
-    #--subnet-id $SUBNET_ID\
-    --tag-specifications "ResourceType=instance,Tags={Key=Name,Value=$instance}" \ 
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \ 
     --query '.Instances[0].InstanceId' \
     --output text )
 
-    if [ $instance == "frontend" ];then
-       IP=$(
-        aws ec2 describe-instances \
+    if [ "$instance" == "frontend" ]; then
+       IP=$(aws ec2 describe-instances \
          --instance-ids $INSTANCE_ID \
-         --query '.Instances[0].InstanceId' \
+         --query '.Instances[].InstanceId.PublicIpAdress' \
          --output text
        )
     else
-        IP=$(
-        aws ec2 describe-instances \
+        IP=$(aws ec2 describe-instances \
          --instance-ids $INSTANCE_ID \
          --query 'Reservations[].Instances[].PrivateIpAddress' \
          --output text
         )
-    fi   
+    fi 
+    echo "$instance ip: $IP"  
 done        
