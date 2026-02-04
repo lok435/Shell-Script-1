@@ -26,21 +26,16 @@ echo -e " $R..please run this script with root user$N"
 exit 1
 fi
 
-echo -e " $G..installing nginx$N "
-yum install nginx -y &>> LOGFILE
-
-if [ $? -ne 0 ];then 
-yum install nginx -y 
-validate $? "installing nginx"
-else
-echo -e "nginx is already installed $Y skipping$N"
-fi
-
-yum install mysql -y &>> $LOG_FILE
-validate $? "installing mongodb"
-
-yum install nodejs -y &>> $LOG_FILE
-validate $? "installing nodejs"
+for package in $@
+do 
+    yum list installed $package &>> $LOGFILE
+    if [ $? -ne 0 ];then 
+    yum install $package -y 
+    validate $? "installing nginx"
+    else
+    echo -e "$package..is already installed $Y skipping$N"
+    fi
+done
 
 sleep 30
 ENDTIME=$(date +%s)
