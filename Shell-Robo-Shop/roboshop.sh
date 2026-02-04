@@ -12,4 +12,4 @@ aws ec2 run-instances \
   --instance-type $INSTANCE_TYPE \
   --security-group-ids $SECURITY_GROUP_ID \
   #--subnet-id $SUBNET_ID \
-  --tag-specifications 'ResourceType=instance,Tags={Key=<TagKey>,Value=$instance}' 
+  --tag-specifications 'ResourceType=instance,Tags={Key=<TagKey>,Value=mongo}' 
