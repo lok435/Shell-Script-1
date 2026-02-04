@@ -10,7 +10,7 @@ N="\e[0m"
 LOG_FOLDER="/var/log/Shell-script"
 LOG_FILE="/var/log/Shell-script/$0.log"
 
-mkdir -p /var/log/Shell-script &>> LOGFILE
+mkdir -p /var/log/Shell-script &>> LOG_FILE
 
 validate(){
     if [ $1 -ne 0 ];then 
@@ -27,9 +27,9 @@ fi
 
 for package in $@
 do 
-    yum list installed $package &>> $LOGFILE
+    yum list installed $package &>> $LOG_FILE
     if [ $? -ne 0 ];then 
-    yum install $package -y 
+    yum install $package -y  &>> $LOG_FILE
     validate $? "installing nginx"
     else
     echo -e "$package..is already installed $Y skipping$N"
