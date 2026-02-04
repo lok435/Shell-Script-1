@@ -7,7 +7,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 set -e 
-trap 'echo "Error on line $LINENO with exit status $?"' ERR
+trap 'echo "Error on line $LINENO ,command: $BASH_COMMAND"' ERR
 
 mkdir -p /var/log/Shell-script &>> LOG_FILE
 LOG_FOLDER="/var/log/Shell-script"
