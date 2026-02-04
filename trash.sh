@@ -9,19 +9,19 @@ N="\e[0m"
 set -e 
 trap 'echo "Error on line $LINENO with exit status $?"' ERR
 
+mkdir -p /var/log/Shell-script &>> LOG_FILE
 LOG_FOLDER="/var/log/Shell-script"
 LOG_FILE="/var/log/Shell-script/$0.log"
 
-mkdir -p /var/log/Shell-script &>> LOG_FILE
 if [ $ID -ne 0 ];then 
 echo -e " $R..please run this script with root user $N" 
 fi
 
 for package in $@
 do 
-    yum list installed $package &>> | tee -a $LOG_FILE
+    yum list installed $package &>>  $LOG_FILE
     if [ $? -ne 0 ];then 
-    yum install $package -y  &>> | tee -a $LOG_FILE
+    yum install $package -y  &>>  $LOG_FILE
     else
     echo -e "$package..is already installed $Y skipping$N"
     fi
