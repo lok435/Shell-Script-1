@@ -11,7 +11,7 @@ N="\e[0m"
 LOG_FOLDER="/var/log/Shell-script"
 LOG_FILE="/var/log/Shell-script/$0.log"
 
-mkdir -p /var/log/Shell-script
+mkdir -p /var/log/Shell-script &>> LOGFILE
 
 validate(){
     if [ $1 -ne 0 ];then 
@@ -27,7 +27,7 @@ exit 1
 fi
 
 echo -e " $G..installing nginx$N "
-yum install nginx -y 
+yum install nginx -y &>> LOGFILE
 
 if [ $? -ne 0 ];then 
 yum install nginx -y 
