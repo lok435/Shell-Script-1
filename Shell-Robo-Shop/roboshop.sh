@@ -7,14 +7,14 @@ SECURITY_GROUP_ID="sg-08c7f0d0c031b570c"
 REGION="us-east-1"
 for instance in $@
 do 
-    INSTANCE_ID=$(aws ec2 run-instances \
-    --image-id $AMI_ID \
-    --region $REGION \
-    --instance-type $INSTANCE_TYPE \
-    --security-group-ids $SECURITY_GROUP_ID \
-    #--subnet-id $SUBNET_ID \
+    INSTANCE_ID=$(aws ec2 run-instances\
+    --image-id $AMI_ID\
+    --region $REGION\
+    --instance-type $INSTANCE_TYPE\
+    --security-group-ids $SECURITY_GROUP_ID\
+    #--subnet-id $SUBNET_ID\
     --tag-specifications 'ResourceType=instance,Tags={Key=Name,Value=$instance}'\ 
-    --query 'Reservations[].Instances[].PublicIpAddress' \
+    --query 'Reservations[].Instances[].PublicIpAddress'\
     --output text )
 
     if [ $instance == "frontend" ];then
