@@ -37,10 +37,10 @@ echo -e "nginx is already installed $Y skipping$N"
 fi
 
 yum install mysql -y &>> $LOG_FILE
-validate $1 "installing mongodb"
+validate $? "installing mongodb"
 
 yum install nodejs -y &>> $LOG_FILE
-validate $1 "installing nodejs"
+validate $? "installing nodejs"
 
 sleep 30
 ENDTIME=$(date +%s)
