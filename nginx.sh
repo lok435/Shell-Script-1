@@ -1,6 +1,6 @@
 #!/bin/bash
 STARTTIME=$(date +%s)
-
+TIMESTAMP=$(date)
 ID=$(id -u)
 R="\e[31m"
 G="\e[32m"
@@ -35,8 +35,10 @@ do
     echo -e "$package..is already installed $Y skipping$N"
     fi
 done
-
-sleep 30
+echo "this script executed at $TIMESTAMP"
+set -e
+echoo "this line is for demonstrating"
+sleep 11
 ENDTIME=$(date +%s)
 TOTALTIME=$(($ENDTIME-$STARTTIME))
 echo -e "total script execution time is $TOTALTIME"
