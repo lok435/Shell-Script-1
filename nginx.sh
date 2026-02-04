@@ -37,7 +37,7 @@ do
 done
 echo "this script executed at $TIMESTAMP"
 set -e
-echoo "this line is for demonstrating"
+echo "this line is for demonstrating"
 sleep 11
 ENDTIME=$(date +%s)
 TOTALTIME=$(($ENDTIME-$STARTTIME))
