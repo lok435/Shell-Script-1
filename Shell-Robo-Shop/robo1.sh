@@ -27,32 +27,32 @@ do
             --query 'Reservations[].Instances[].PrivateIpAddress' \
             --output text
         )
-        RECORD_NAME="$instance.$DOMAIN_NAME"
     fi
+    RECORD_NAME="$instance.$DOMAIN_NAME"
     echo " ipadress is : $IP"
 
 
-  aws route53 change-resource-record-sets \
-    --hosted-zone-id "$HOSTED_ZONE_ID" \
-    --change-batch <<EOF
-  '{
-    "Comment": "Update A record for www.example.com",
-    "Changes": [
-      {
-        "Action": "UPSERT",
-        "ResourceRecordSet": {
-          "Name": "'$RECORD_NAME'",
-          "Type": "A",
-          "TTL": 1,
-          "ResourceRecords": [
-            {
-              "Value": "'$IP'"
-            }
-          ]
-        }
+aws route53 change-resource-record-sets \
+  --hosted-zone-id "$HOSTED_ZONE_ID" \
+  --change-batch <<EOF
+{
+  "Comment": "Update A record",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "$RECORD_NAME",
+        "Type": "A",
+        "TTL": 1,
+        "ResourceRecords": [
+          {
+            "Value": "$IP"
+          }
+        ]
       }
-    ]
-  }'
-  EOF
+    }
+  ]
+}
+EOF
     
 done 
