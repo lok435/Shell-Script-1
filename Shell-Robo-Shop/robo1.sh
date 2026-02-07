@@ -32,26 +32,27 @@ do
     echo " ipadress is : $IP"
 
 
- aws route53 change-resource-record-sets\
-  --hosted-zone-id  $HOSTED_ZONE_ID \
-  --change-batch '{
-  "Comment": "Update A record for www.example.com",
-  "Changes": [
-    {
-      "Action": "UPSERT",
-      "ResourceRecordSet": {
-        "Name": "'$RECORD_NAME'",
-        "Type": "A",
-        "TTL": 1,
-        "ResourceRecords": [
-          {
-            "Value": "'$IP'"
-          }
-        ]
+  aws route53 change-resource-record-sets \
+    --hosted-zone-id "$HOSTED_ZONE_ID" \
+    --change-batch <<EOF
+  {
+    "Comment": "Update A record for www.example.com",
+    "Changes": [
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "Name": "$RECORD_NAME",
+          "Type": "A",
+          "TTL": 1,
+          "ResourceRecords": [
+            {
+              "Value": "$IP"
+            }
+          ]
+        }
       }
-    }
-  ]
-}'
-  echo "recorded updated for '$instance'"   
-  
-done
+    ]
+  }
+  EOF
+    
+done 
