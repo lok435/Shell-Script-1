@@ -33,7 +33,7 @@ validate $? "enabling specific node"
 dnf install nodejs -y &>> LOG_FILE
 validate $? "installing nodejs"
 
-id roboshop
+id roboshop &>> LOG_FILE
 if [ $? -ne 0 ]; then
     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>> LOG_FILE
     validate $? "adding a user"
@@ -57,6 +57,7 @@ cd /app
 npm install  &>> LOG_FILE
 
 cp catalogue.service /etc/systemd/system/catalogue.service &>> LOG_FILE
+validate $? "copying code fron one to other place"
 
 
 
