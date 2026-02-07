@@ -6,9 +6,9 @@ DOMAIN_NAME="frontend.bnbs.life"
 for instance in $@
 do
     INSTANCE_ID=$(aws ec2 run-instances \
-  --image-id=$AMI_ID \
+  --image-id $AMI_ID \
   --instance-type t3.micro \
-  --security-group-ids=$SG_ID \
+  --security-group-ids $SG_ID \
   --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
   --query 'Instances[0].InstanceId' \
   --output text)
@@ -33,7 +33,7 @@ do
 
 
  aws route53 change-resource-record-sets\
-  --hosted-zone-id $HOSTEDZONE_ID \
+  --hosted-zone-id  $HOSTEDZONE_ID \
   --change-batch '
         {
   "Comment": "Update A record for www.example.com",
