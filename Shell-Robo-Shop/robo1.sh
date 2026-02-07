@@ -1,4 +1,5 @@
-
+HOSTEDZONE_Id=$"Z007932124TF6WJ9OLE5"
+DOMAIN_NAME=$"frontend.bnbs.life"
 for instance in $@
 do
     INSTANCE_ID=$(aws ec2 run-instances \
@@ -23,6 +24,32 @@ do
             --query 'Reservations[].Instances[].PrivateIpAddress' \
             --output text
         )
+        RECORD_NAME="$instance.$DOMAIN_NAME"
     fi
     echo " ipadress is : $IP"
+
+
+ aws route53 change-resource-record-sets\
+  --hosted-zone-id $HOSTEDZONE_ID \
+  --change-batch '
+        {
+  "Comment": "Update A record for www.example.com",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "'$RECORD_NAME'",
+        "Type": "A",
+        "TTL": 1,
+        "ResourceRecords": [
+          {
+            "Value": "'$IP'"
+          }
+        ]
+      }
+    }
+  ]
+}
+  echo "recorded updated for '$instance'"   
+  '
 done
