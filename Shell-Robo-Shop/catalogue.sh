@@ -55,8 +55,8 @@ cd /app
 rm -rf * /app
 validate $? "removing existing code"
 
-unzip -o  /tmp/catalogue.zip   &>> LOG_FILE
-npm install  &>> LOG_FILE
+unzip -o  /tmp/catalogue.zip   
+npm install  
 
 cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
 validate $? "copying code from one to other place"
