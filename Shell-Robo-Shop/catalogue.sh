@@ -6,6 +6,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 SCRIPT_DIR=$PWD
+MONGODB_HOST=$mongo.bnbs.life
 
 LOG_FOLDER="/var/log/Shell-script"
 LOG_FILE="$LOG_FOLDER/$0.log"
@@ -67,6 +68,17 @@ systemctl daemon-reload
 systemctl enable catalogue 
 systemctl start catalogue
 validate $? "enabling and starting catalogue"
+
+cp $PWD/mongo.repo /etc/yum.repos.d/mongo.repo
+validate $? "copying the content"
+
+dnf install mongodb-mongosh -y
+validate $? "installing mongodb"
+
+mongosh --host MONGODB_HOST</app/db/master-data.js
+validate $? "Loading the data into mongodb"
+
+
 
 
 
