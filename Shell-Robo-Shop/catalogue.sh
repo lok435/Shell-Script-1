@@ -56,7 +56,7 @@ unzip -o  /tmp/catalogue.zip  -d /app &>> LOG_FILE
 cd /app
 npm install  &>> LOG_FILE
 
-cp catalogue.service /etc/systemd/system/catalogue.service 
+sudo cp catalogue.service /etc/systemd/system/ 
 validate $? "copying code from one to other place"
 
 
