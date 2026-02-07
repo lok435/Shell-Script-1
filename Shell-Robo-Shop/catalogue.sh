@@ -52,12 +52,12 @@ validate $? "downloading code from s3 bucket"
 
 cd /app 
 
-unzip -o  /tmp/catalogue.zip  -d /app
+unzip -o  /tmp/catalogue.zip  -d /app &>> LOG_FILE
 cd /app
 npm install  &>> LOG_FILE
 
-cp catalogue.service /etc/systemd/system/catalogue.service &>> LOG_FILE
-validate $? "copying code fron one to other place"
+cp catalogue.service /etc/systemd/system/catalogue.service 
+validate $? "copying code from one to other place"
 
 
 
