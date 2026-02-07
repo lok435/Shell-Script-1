@@ -5,6 +5,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+SCRIPT_DIR=$PWD
 
 LOG_FOLDER="/var/log/Shell-script"
 LOG_FILE="$LOG_FOLDER/$0.log"
@@ -51,12 +52,13 @@ curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue
 validate $? "downloading code from s3 bucket"
 
 cd /app 
+rm -rf * /app
+validate $? "removing existing code"
 
-unzip -o  /tmp/catalogue.zip  -d /app &>> LOG_FILE
-cd /app
+unzip -o  /tmp/catalogue.zip   &>> LOG_FILE
 npm install  &>> LOG_FILE
 
-sudo cp catalogue.service /etc/systemd/system/ 
+cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
 validate $? "copying code from one to other place"
 
 
