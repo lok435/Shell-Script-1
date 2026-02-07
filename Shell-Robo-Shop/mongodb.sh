@@ -24,16 +24,16 @@ echo -e " $R..please run this script with root user $N"
 exit 1
 fi
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOG_FILE
 validate $? "copying mongo.repo"
 
-dnf install mongodb-org -y 
+dnf install mongodb-org -y  &>> $LOG_FILE
 validate $? "installing mongodb"
 
-systemctl enable mongod
+systemctl enable mongod &>> $LOG_FILE
 validate $? "enabling mongodb"
 
-systemctl start mongod
+systemctl start mongod &>> $LOG_FILE
 validate $? "staring mongodb"
 
 sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mongod.conf
