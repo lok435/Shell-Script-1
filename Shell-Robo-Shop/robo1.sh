@@ -34,8 +34,7 @@ do
 
 aws route53 change-resource-record-sets \
   --hosted-zone-id "$HOSTED_ZONE_ID" \
-  --change-batch <<EOF
-{
+  --change-batch '{
   "Comment": "Update A record",
   "Changes": [
     {
@@ -53,6 +52,7 @@ aws route53 change-resource-record-sets \
     }
   ]
 }
+'
 EOF
     
 done 
