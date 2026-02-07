@@ -1,9 +1,9 @@
-AIM_ID="ami-0220d79f3f480ecf5"
+AMI_ID="ami-0220d79f3f480ecf5"
 SG_ID="sg-08c7f0d0c031b570c"
 HOSTEDZONE_Id="Z007932124TF6WJ9OLE5"
 DOMAIN_NAME="frontend.bnbs.life"
 
-for instance in $@
+for instance in "$@"
 do
     INSTANCE_ID=$(aws ec2 run-instances \
   --image-id $AMI_ID \
