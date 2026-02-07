@@ -39,5 +39,5 @@ validate $? "staring mongodb"
 sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mongod.conf
 validate $? "changing the port"
 
-systemctl restart mongod 
+systemctl restart mongod  
 validate $? "restarting MONGODB"
