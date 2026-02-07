@@ -75,7 +75,7 @@ validate $? "copying the content"
 dnf install mongodb-mongosh -y &>> LOG_FILE
 validate $? "installing mongodb"
 
-mongosh --host MONGODB_HOST </app/db/master-data.js
+mongosh --host $MONGODB_HOST </app/db/master-data.js
 validate $? "Loading the data into mongodb"
 
 
