@@ -45,7 +45,7 @@ validate $? "installing curl"
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip  &>> LOG_FILE
 validate $? "downloading code from s3 bucket"
 
-cd /app &>> LOG_FILE
+cd /app 
 
 unzip /tmp/catalogue.zip &>> LOG_FILE
 cd /app
