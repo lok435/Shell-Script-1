@@ -1,7 +1,7 @@
-SG_ID=$sg-08c7f0d0c031b570c
-AIM_ID=$"ami-0220d79f3f480ecf5"
-HOSTEDZONE_Id=$"Z007932124TF6WJ9OLE5"
-DOMAIN_NAME=$"frontend.bnbs.life"
+AIM_ID="ami-0220d79f3f480ecf5"
+SG_ID="sg-08c7f0d0c031b570c"
+HOSTEDZONE_Id="Z007932124TF6WJ9OLE5"
+DOMAIN_NAME="frontend.bnbs.life"
 
 for instance in $@
 do
