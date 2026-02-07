@@ -55,6 +55,7 @@ cd /app
 rm -rf * /app
 validate $? "removing existing code"
 
+cd /app
 unzip -o  /tmp/catalogue.zip   
 npm install  
 
