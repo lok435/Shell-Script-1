@@ -1,6 +1,6 @@
 AMI_ID="ami-0220d79f3f480ecf5"
 SG_ID="sg-08c7f0d0c031b570c"
-HOSTEDZONE_Id="Z007932124TF6WJ9OLE5"
+HOSTED_ZONE_ID="Z007932124TF6WJ9OLE5"
 DOMAIN_NAME="frontend.bnbs.life"
 
 for instance in "$@"
@@ -33,7 +33,7 @@ do
 
 
  aws route53 change-resource-record-sets\
-  --hosted-zone-id  $HOSTEDZONE_ID \
+  --hosted-zone-id  $HOSTED_ZONE_ID \
   --change-batch '
         {
   "Comment": "Update A record for www.example.com",
