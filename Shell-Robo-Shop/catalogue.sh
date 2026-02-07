@@ -33,8 +33,13 @@ validate $? "enabling specific node"
 dnf install nodejs -y &>> LOG_FILE
 validate $? "installing nodejs"
 
-useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>> LOG_FILE
-validate $? "adding a user"
+id roboshop
+if [ $? -ne 0 ]; then
+    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>> LOG_FILE
+    validate $? "adding a user"
+else 
+    echo -e "$G roboshop user is already exist... $Y skipping $N"
+fi
 
 mkdir -p /app &>> LOG_FILE
 validate $? "creating a dictory"
@@ -47,7 +52,7 @@ validate $? "downloading code from s3 bucket"
 
 cd /app 
 
-unzip -o  /tmp/catalogue.zip 
+unzip -o  /tmp/catalogue.zip  -d /app
 cd /app
 npm install  &>> LOG_FILE
 
