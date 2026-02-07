@@ -72,7 +72,7 @@ validate $? "enabling and starting catalogue"
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 validate $? "copying the content"
 
-dnf install mongodb-mongosh -y
+dnf install mongodb-mongosh -y &>> LOG_FILE
 validate $? "installing mongodb"
 
 mongosh --host MONGODB_HOST </app/db/master-data.js
