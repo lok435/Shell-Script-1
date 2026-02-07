@@ -47,7 +47,7 @@ validate $? "downloading code from s3 bucket"
 
 cd /app 
 
-unzip /tmp/catalogue.zip &>> LOG_FILE
+unzip /tmp/catalogue.zip 
 cd /app
 npm install  &>> LOG_FILE
 
