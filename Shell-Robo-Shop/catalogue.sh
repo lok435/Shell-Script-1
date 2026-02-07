@@ -49,7 +49,7 @@ cd /app &>> LOG_FILE
 
 unzip /tmp/catalogue.zip &>> LOG_FILE
 cd /app
-npm install 
+npm install  &>> LOG_FILE
 
 cp catalogue.service /etc/systemd/system/catalogue.service &>> LOG_FILE
 
