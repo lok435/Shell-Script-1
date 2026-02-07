@@ -6,7 +6,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 SCRIPT_DIR=$PWD
-MONGODB_HOST=$mongo.bnbs.life
+MONGODB_HOST=mongo.bnbs.life
 
 LOG_FOLDER="/var/log/Shell-script"
 LOG_FILE="$LOG_FOLDER/$0.log"
